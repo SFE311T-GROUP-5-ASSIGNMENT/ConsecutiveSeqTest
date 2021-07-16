@@ -26,3 +26,5 @@ if __name__ == '__main__':
     longestCount = longestConsecutive(myList)
     # printing out the number of consecutives found
     print(f'The count of the longest consecutive values is {longestCount}')
+    
+    
