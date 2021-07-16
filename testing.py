@@ -1,29 +1,40 @@
 import unittest
+from typing import Counter
 
+#permutation function 
+def longestConsecutive(listOfNums):
+    #sorting the list
+    listOfNums.sort()
+    #initialising of the counter
+    consecutive_counter = 0
+    
+    #loop created to loop through the list of given values
+    for i in range(len(listOfNums)):
+        #checks for consecutive values then updates the counter when one is found
+        if (listOfNums[i] - listOfNums[i-1]) == 1 or (listOfNums[i] - listOfNums[i-1]) == -1 or listOfNums[i] <= listOfNums[i-1] and listOfNums[i] != listOfNums[i-1]:
+            #Updating the counter
+            consecutive_counter = consecutive_counter + 1
+    #returning the number of consecutive valuesfound
+    return consecutive_counter
 
-def nextPermutations(myList):
-    pass
+if __name__ == '__main__':
+    #list to be checked for consecutives
+    myList = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]
+    #longest consecutive function call
+    longestCount = longestConsecutive(myList)
+    #printing out the number of consecutives found
+    print(f'The count of the longest consecutive values is {longestCount}')
 
-
-class nextTest(unittest.TestCase):
-    # test the output of the correct value
-    def test_next(self):
-        # list to test
-        myList = [1, 2, 3]
-        # function call to be tested
-        result = nextPermutations(myList)
-        # assert
-        self.assertEqual(result, [1, 3, 2])
-        # test for the wrong output
-
-    def test_next_not_equal(self):
-        # list to test
-        myList = [1, 2, 3]
-        # function call to be tested
-        result = nextPermutations(myList)
-        # assert
-        self.assertNotEqual(result, [1, 2, 3])
-
-
+from long import longestConsecutive
+class longTest(unittest.TestCase):
+    def test_long(self):
+        myList = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]
+        result = longestConsecutive(myList)
+        self.assertEqual(result, 9)    
+    def test_long_not_equal(self):
+        myList = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]
+        result = longestConsecutive(myList)
+        self.assertNotEqual(result, 8)
+        
 if __name__ == '__main__':
     unittest.main()
